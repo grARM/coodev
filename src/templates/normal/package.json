@@ -1,0 +1,19 @@
+{
+  "name": "coodev-temp-normal",
+  "version": "1.0.0",
+  "description": "基于coodev的normal工程模板",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grARM/coodev-temp-normal.git"
+  },
+  "author": "grARM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grARM/coodev-temp-normal/issues"
+  },
+  "homepage": "https://github.com/grARM/coodev-temp-normal#readme"
+}
