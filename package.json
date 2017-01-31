@@ -12,7 +12,7 @@
     "url": "git+https://github.com/grARM/coodev.git"
   },
   "engines": {
-    "node":  ">=0.6"
+    "node": ">=0.6"
   },
   "author": "grarm",
   "licenses": [
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/grARM/coodev/issues"
   },
-  "homepage": "https://github.com/grARM/coodev#readme"
+  "homepage": "https://github.com/grARM/coodev#readme",
+  "dependencies": {
+    "webpack": "^1.12.15"
+  }
 }
