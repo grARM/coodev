@@ -26,7 +26,14 @@ var task = {
 		// });
 		// copyDirs(path.resolve(templatePath, './normal/'), proPath, function (err){
 		copyDirs(templatePathLocal, proPath, function (err){
-			console.log('err: ', err);
+			if (!!err) {
+				console.log('err: ', err);
+			}
+		});
+	},
+	creatDist: function(){
+		fs.mkdir(path.resolve(proPath, './dist/'), function(){
+			//console.log('./dist/,ok');
 		});
 	}
 };
@@ -38,6 +45,7 @@ exports.render = function(){
 			console.log("this project had init!");
 		}else{
 			task.createdir();
+			task.creatDist();
 		}
 	})
 };
