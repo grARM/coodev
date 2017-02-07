@@ -3,13 +3,14 @@ var webpack = require('webpack');
 var _ = require('underscore');
 var fs = require('fs');
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-//var HtmlwebpackPlugin = require('html-webpack-plugin');
+// var ExtractTextPlugin = require("extract-text-webpack-plugin");
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH);
 var BUILD_PATH = path.resolve(ROOT_PATH, './bin');
 
 var proPath = process.cwd();
+// console.log("propath: ", proPath);
 var coodevConfigPath = path.resolve(proPath, './coodev.config.json');
 var coodevConfig = require(coodevConfigPath);
 
@@ -45,6 +46,10 @@ _.each(coodevConfig.pages, function (v, i) {
 // var NODE_PATH = path.resolve(__dirname, 'node_modules');
 //todo: jslint
 
+//less to css
+// var extractCSS = new ExtractTextPlugin("../styles/[name].css");
+//var extractLESS = new ExtractTextPlugin("../styles/[name].less");
+
 module.exports = {
   //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
   entry: webpackEntry,
@@ -56,7 +61,24 @@ module.exports = {
   externals:{
     jquery: "jQuery"
   },
-  plugins: ([]).concat(webpackHtml)
+  // module: {
+  //   loaders: [
+  //     // {
+  //     //   test : /\.(less|css)$/,
+  //     //   loader: ExtractTextPlugin.extract('style', 'css!less')
+  //     // }
+  //     { test: /\.css$/, loader: extractCSS.extract(['css']) },
+  //     { test: /\.less/, loader: extractCSS.extract(['css', 'less'])}
+  //   ]
+  // },
+  resolve: {
+    root: [
+      proPath
+    ]
+  },
+  plugins: ([
+    // extractCSS
+  ]).concat(webpackHtml)
   // ,
   // plugins: [
   //   new webpack.BannerPlugin('#!/usr/bin/env node')

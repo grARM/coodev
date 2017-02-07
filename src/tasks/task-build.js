@@ -7,7 +7,9 @@ var _ = require('underscore');
 var ROOT_PATH = path.resolve(__dirname);
 var proPath = process.cwd();
 var coodevConfigPath = path.resolve(proPath, './coodev.config.json');
+//var webpackConfigPath = path.resolve(proPath, './webpack.config.js');
 // var pagePath = path.resolve(proPath, './coodev.config.json');
+var lessRender = require('../lessRender.js');
 
 var task = {
 	'pages': [],
@@ -88,7 +90,7 @@ var task = {
 
 	},
 	renderWebpack: function () {
-		var webpackConfig = require('../../webpack.config.js');
+		var webpackConfig = require(path.resolve(proPath, './webpack.config.js'));
 		// process.exec('webpack', function (error, stdout, stderr){
 		// 	if(error !== null){
 		// 		console.log('exec error: ', error);
