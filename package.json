@@ -1,6 +1,6 @@
 {
   "name": "coodev",
-  "version": "0.0.51",
+  "version": "0.0.58",
   "description": "前端写作开发流程的脚手架",
   "main": "index.js",
   "bin": "index.js",
@@ -29,7 +29,9 @@
     "async": "^2.1.4",
     "html-webpack-plugin": "^2.28.0",
     "less": "^2.7.2",
+    "ora": "^1.1.0",
     "underscore": "^1.8.3",
-    "webpack": "^1.12.15"
+    "webpack": "^1.12.15",
+    "webpack-merge": "^2.6.1"
   }
 }

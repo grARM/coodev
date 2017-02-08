@@ -15,5 +15,18 @@
   "bugs": {
     "url": "https://github.com/grARM/coodev-temp-normal/issues"
   },
-  "homepage": "https://github.com/grARM/coodev-temp-normal#readme"
+  "homepage": "https://github.com/grARM/coodev-temp-normal#readme",
+  "dependencies": {
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.28.0",
+    "jquery": "^1.7.2",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "ora": "^1.1.0",
+    "style-loader": "^0.13.1",
+    "underscore": "^1.8.3",
+    "webpack": "^1.14.0",
+    "webpack-merge": "^2.6.1"
+  }
 }

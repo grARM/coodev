@@ -5,8 +5,10 @@ var ROOT_PATH = path.resolve(__dirname);
 // var BUILD_PATH = path.resolve(ROOT_PATH, './bin');
 var proPath = process.cwd();
 var templatePath = path.resolve(ROOT_PATH, '../templates');
-var templatePathLocal = path.resolve(proPath, '../coodev-temp-normal/normal/');
-
+// var templatePathLocal = path.resolve(proPath, '../coodev-temp-normal/normal/');
+var templatePathLocal = path.resolve(templatePath, "./normal/");
+var ora = require('ora');
+var spinnerInit = ora('now is init our porject ...');
 
 var fs = require('fs');
 var task = {
@@ -17,35 +19,30 @@ var task = {
 		});
 	},
 	'createdir': function(cb){
-		// console.log('path:', path.resolve(proPath, './src/'));
-		// fs.mkdir(path.resolve(proPath, './src/'), function(){
-		// 	console.log('./src/,ok');
-		// });
-		// fs.mkdir(path.resolve(proPath, './dist/'), function(){
-		// 	console.log('./dist/,ok');
-		// });
-		// copyDirs(path.resolve(templatePath, './normal/'), proPath, function (err){
+		var self = this;
+
 		copyDirs(templatePathLocal, proPath, function (err){
 			if (!!err) {
 				console.log('err: ', err);
 			}
+			self.creatDist();
 		});
 	},
 	creatDist: function(){
 		fs.mkdir(path.resolve(proPath, './dist/'), function(){
-			//console.log('./dist/,ok');
+			spinnerInit.stop();
 		});
 	}
 };
 
 exports.render = function(){
-	// task.createdir();
+	spinnerInit.start();
 	task.checkdir(function(exists){
 		if(exists){
 			console.log("this project had init!");
 		}else{
 			task.createdir();
-			task.creatDist();
+			//task.creatDist();
 		}
 	})
 };
