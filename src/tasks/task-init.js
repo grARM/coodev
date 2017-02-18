@@ -1,6 +1,7 @@
 var path = require('path');
 var copyDirs = require('../lib/copy-file.js').copyDir;
 var ROOT_PATH = path.resolve(__dirname);
+var child_process = require('child_process');
 // var APP_PATH = path.resolve(ROOT_PATH);
 // var BUILD_PATH = path.resolve(ROOT_PATH, './bin');
 var proPath = process.cwd();
@@ -29,8 +30,17 @@ var task = {
 		});
 	},
 	creatDist: function(){
+		var self = this;
 		fs.mkdir(path.resolve(proPath, './dist/'), function(){
 			spinnerInit.stop();
+			console.log('dir creat success now has init 70%');
+			console.log('next install lib ...');
+			self.installLib();
+		});
+	},
+	installLib: function(){
+		child_process.execSync('cd ' + proPath + ' && ' + 'cnpm install', function(){
+			console.log('install ok');
 		});
 	}
 };
