@@ -41,16 +41,6 @@ var argHelp = _.mapObject(argInfo, function (argItem) {
 	return argItem.help;
 });
 
-// var argMap = {
-// 	'init': function(){return require('../src/tasks/task-init.js');},
-// 	'dev': function(){return require('../src/tasks/task-dev.js');},
-// 	'start': function(){return require('../src/tasks/task-server.js');},
-// 	'build': function(){return require('../src/tasks/task-build.js');},
-// 	'publish': function(){return require('../src/tasks/task-publish.js');},
-// 	'version': function(){return require('../src/tasks/task-version.js');},
-// 	'-v': function(){return require('../src/tasks/task-version.js');},
-// 	'-help': function(){return require('../src/tasks/task-help.js');}
-// };
 
 exports.argMap = argMap;
 exports.argHelp = argHelp;
