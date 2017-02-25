@@ -5,5 +5,6 @@
 	"common-css": [
 	],
 	"publish-dir": "",
-	"server-render-language": "jsp"
+	"server-render-language": "ejs",
+	"style-precompiled": "less"
 }

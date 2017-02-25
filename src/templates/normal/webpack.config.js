@@ -47,6 +47,22 @@ _.each(coodevConfig.pages, function (v, i) {
 });
 
 var extractCSS = new ExtractTextPlugin("../styles/[name].css");
+
+var styleLoaderMap = {
+  'sass': {
+    test : /\.(scss|css)$/,
+    loader: ExtractTextPlugin.extract('style', 'css!sass')
+  },
+  'less': {
+    test : /\.(less|css)$/,
+    loader: ExtractTextPlugin.extract('style', 'css!less')
+  }
+};
+var styleLoader = {};
+if(coodevConfig['style-precompiled']){
+  styleLoader = styleLoaderMap[coodevConfig['style-precompiled']]
+}
+
 module.exports = {
   //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
   entry: webpackEntry,
@@ -60,10 +76,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test : /\.(less|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css!less')
-      }
+      styleLoader
     ]
   },
   plugins: ([
