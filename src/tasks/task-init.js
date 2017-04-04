@@ -39,6 +39,7 @@ var task = {
 		loadNormalTmpl(function(){
 			console.log('download templat ok');
 			self.creatDist();
+			cb && cb();
 		});
 	},
 	creatDist: function(){
@@ -57,15 +58,36 @@ var task = {
 	}
 };
 
+function velocityChange(){
+	var configPath = path.resolve(proPath, './coodev.config.json');
+	var indexPagePath = path.resolve(proPath, './src/pages/index.html');
+	var listPagePath = path.resolve(proPath, './src/pages/list.html');
+
+	var confStr = fs.readFileSync(path.resolve(proPath, './velocity-example/coodev.config.json'), 'UTF-8');
+	var indexHtml = fs.readFileSync(path.resolve(proPath, './velocity-example/index.html'), 'UTF-8');
+	var listHtml = fs.readFileSync(path.resolve(proPath, './velocity-example/list.html'), 'UTF-8');
+	fs.writeFileSync(configPath, confStr, 'utf8');
+	fs.writeFileSync(indexPagePath, indexHtml, 'utf8');
+	fs.writeFileSync(listPagePath, listHtml, 'utf8');
+}
+
 exports.render = function(){
 	inquirer.prompt([{
 	    type: 'list',
 	    message: 'which template do you need:',
 	    name: 'template',
 	    choices: ['normal', 'wap', 'h5']
+	},{
+	    type: 'list',
+	    message: 'which tpl language do you need:',
+	    name: 'tpllanguage',
+	    choices: ['els', 'velocity']
 	}]).then(function (answers) {
 	  	if (answers.template == 'normal') {
 			tmplUrl = 'grARM/coodev-temp-normal';
+	    }else{
+	    	console.log('目前只发布了 normal 模板');
+	    	return;
 	    }
 
 	    spinnerInit.start();
@@ -73,8 +95,13 @@ exports.render = function(){
 			if(exists){
 				console.log("this project had init!");
 			}else{
-				task.createdir();
+				task.createdir(function(){
+					if(answers.tpllanguage == 'velocity'){
+						velocityChange();
+					}
+				});
 				//task.creatDist();
+				
 			}
 		})
 	})	

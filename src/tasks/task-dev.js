@@ -9,6 +9,7 @@ var proPath = process.cwd();
 var coodevConfigPath = path.resolve(proPath, './coodev.config.json');
 var spinnerStart = ora('now is building all the project for the first time...');
 var spinnerChange = ora('watching for file change ...');
+var appPage = require('../app/page');
 
 
 var task = {
@@ -16,13 +17,14 @@ var task = {
 	'pageInfos': {},
 	'init': function(){
 		console.log('task build ok! ');
-		fs.exists(path.resolve(proPath, './dist/pages/'), function (exists){
-			if (!exists) {
-				fs.mkdir(path.resolve(proPath, './dist/pages/'), function(){
+		// fs.exists(path.resolve(proPath, './dist/pages/'), function (exists){
+		// 	if (!exists) {
+		// 		fs.mkdir(path.resolve(proPath, './dist/pages/'), function(){
 					
-				});
-			}
-		});
+		// 		});
+		// 	}
+		// });
+		appPage.initPage();
 	},
 	renderWebpack: function () {
 		spinnerStart.start();
@@ -41,6 +43,8 @@ var task = {
 			}, 500);
 			spinnerChange.start();
 		});
+
+		appPage.watchPage();
 	}
 }
 

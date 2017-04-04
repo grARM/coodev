@@ -10,16 +10,15 @@ var spinnerStart = ora('Server is start ...');
 
 var task = {
 	'render': function(){
+		console.log('Server is ready at 8080');
 		var file = new static.Server(path.resolve(proPath, './dist/'));
 		http.createServer(function (request, response) {
-			
+			spinnerStart.start();
 			request.addListener('end', function(){
 				file.serve(request, response);
 				console.log('request end');
 			}).resume();
-			spinnerStart.start();
 		}).listen(8080);
-		
 	}
 }
 

@@ -34,8 +34,8 @@ if (program.build) {
 	require('./src/tasks/task-build.js').render();
 }
 
-/** start */
-if (program.start) {
+/** start server */
+if (program.server) {
 	require('./src/tasks/task-server.js').render();
 }
 
@@ -54,7 +54,7 @@ program.on('--help', function () {
   console.log('    $ coodev --dev')
   console.log()
   console.log(chalk.gray('    # start local server'))
-  console.log('    $ coodev --start')
+  console.log('    $ coodev --server')
   console.log()
 })
 

@@ -8,19 +8,21 @@ var proPath = process.cwd();
 var coodevConfigPath = path.resolve(proPath, './coodev.config.json');
 //var webpackConfigPath = path.resolve(proPath, './webpack.config.js');
 // var pagePath = path.resolve(proPath, './coodev.config.json');
+var appPage = require('../app/page');
 
 var task = {
 	'pages': [],
 	'pageInfos': {},
 	'init': function(){
 		console.log('task build ok! ');
-		fs.exists(path.resolve(proPath, './dist/pages/'), function (exists){
-			if (!exists) {
-				fs.mkdir(path.resolve(proPath, './dist/pages/'), function(){
+		// fs.exists(path.resolve(proPath, './dist/pages/'), function (exists){
+		// 	if (!exists) {
+		// 		fs.mkdir(path.resolve(proPath, './dist/pages/'), function(){
 					
-				});
-			}
-		});
+		// 		});
+		// 	}
+		// });
+		appPage.initPage();
 	},
 	renderWebpack: function () {
 		var webpackConfig = require(path.resolve(proPath, './webpack.prod.js'));
