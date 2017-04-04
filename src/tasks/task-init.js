@@ -30,7 +30,6 @@ var loadNormalTmpl = function(cb){
 var fs = require('fs');
 var task = {
 	'checkdir': function(cb){
-		// console.log('checkdir,ok');
 		fs.exists(path.resolve(proPath, './src/'), function (exists){
 			cb && cb(exists);
 		});
@@ -41,12 +40,6 @@ var task = {
 			console.log('download templat ok');
 			self.creatDist();
 		});
-		// copyDirs(templatePathLocal, proPath, function (err){
-		// 	if (!!err) {
-		// 		console.log('err: ', err);
-		// 	}
-		// 	self.creatDist();
-		// });
 	},
 	creatDist: function(){
 		var self = this;
@@ -84,8 +77,5 @@ exports.render = function(){
 				//task.creatDist();
 			}
 		})
-
-	})
-
-	
+	})	
 };

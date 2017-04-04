@@ -1,6 +1,6 @@
 {
   "name": "coodev",
-  "version": "0.0.95",
+  "version": "0.0.96",
   "description": "前端写作开发流程的脚手架",
   "main": "index.js",
   "bin": "index.js",
