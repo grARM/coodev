@@ -1,9 +1,10 @@
 var path = require('path');
-var copyDirs = require('../lib/copy-file.js').copyDir;
+// var copyDirs = require('../lib/copy-file.js').copyDir;
 var ROOT_PATH = path.resolve(__dirname);
 var child_process = require('child_process');
 var download = require('download-git-repo');
 var inquirer = require('inquirer');
+var tools = require('../lib/tools.js');
 // var APP_PATH = path.resolve(ROOT_PATH);
 // var BUILD_PATH = path.resolve(ROOT_PATH, './bin');
 var proPath = process.cwd();
@@ -62,13 +63,17 @@ function velocityChange(){
 	var configPath = path.resolve(proPath, './coodev.config.json');
 	var indexPagePath = path.resolve(proPath, './src/pages/index.html');
 	var listPagePath = path.resolve(proPath, './src/pages/list.html');
+	var commonBodyTmplPath = path.resolve(proPath, './src/common/template/common-body-test.html');
 
 	var confStr = fs.readFileSync(path.resolve(proPath, './velocity-example/coodev.config.json'), 'UTF-8');
 	var indexHtml = fs.readFileSync(path.resolve(proPath, './velocity-example/index.html'), 'UTF-8');
 	var listHtml = fs.readFileSync(path.resolve(proPath, './velocity-example/list.html'), 'UTF-8');
+	var commonBodyTmplHtml = fs.readFileSync(path.resolve(proPath, './velocity-example/common-body-test.html'), 'UTF-8');
 	fs.writeFileSync(configPath, confStr, 'utf8');
 	fs.writeFileSync(indexPagePath, indexHtml, 'utf8');
 	fs.writeFileSync(listPagePath, listHtml, 'utf8');
+	fs.writeFileSync(commonBodyTmplPath, commonBodyTmplHtml, 'utf8');
+	tools.deleteFolder(path.resolve(proPath, './velocity-example'));
 }
 
 exports.render = function(){
@@ -81,7 +86,7 @@ exports.render = function(){
 	    type: 'list',
 	    message: 'which tpl language do you need:',
 	    name: 'tpllanguage',
-	    choices: ['els', 'velocity']
+	    choices: ['velocity', 'els']
 	}]).then(function (answers) {
 	  	if (answers.template == 'normal') {
 			tmplUrl = 'grARM/coodev-temp-normal';

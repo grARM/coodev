@@ -34,8 +34,9 @@ function renderPageDatas(){
 			}
 
 			var tempStr = fs.readFileSync(path.resolve(proPath, v.temp), 'UTF-8');
-			var tempFun = _.template(tempStr);
-			layoutContent[k] = tempFun(data);
+			// var tempFun = _.template(tempStr);
+			// layoutContent[k] = tempFun(data);
+			layoutContent[k] = tmplFn(tempStr, data);
 		});
 		var html = {
 		  filename: (path.resolve(proPath, './dist/pages/' + v + '.html')),
