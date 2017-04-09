@@ -6,7 +6,7 @@
 windows环境： `npm install -g coodev`
 mac环境 ：`sudo npm install -g coodev`
 
-##第一步：初始化
+## 第一步：初始化
 进入你的工程目录 ：`cd yourProjectDir`
 检查安装成功 ：`coodev --version`
 检查命令 ：`coodev --help`
@@ -14,7 +14,7 @@ mac环境 ：`sudo npm install -g coodev`
 这时候你会看到几个问题选项，选择normal模板  、velocity渲染方式，回车完成初始化。
 稍等片刻，你会发现目录下回多了几个文件和文件夹，这是我们已经完成了基本的配置。并已经安装好所需的npm依赖。
 
-##第二步：开发
+## 第二步：开发
 注意根目录下的coodev.config.json
 ``` javascript
 {
