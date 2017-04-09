@@ -31,7 +31,7 @@ mac环境 ：`sudo npm install -g coodev`
 ```
 
 进入你的工程目录 ：`coodev dev`, 这时会自动编译页面，并监听文件修改。
-进入你的工程目录 ：`coodev server`， 这时会根据`server-port` 字段监听对应的端口。
+进入你的工程目录 ：`coodev server`， 这时会根据`server-port` 字段监听对应的端口,开启本地服务。
 打开浏览器，输入<a target="_blank" href="http://127.0.0.1:8080/page/index.html">127.0.0.1:8080/page/index.html </a>就可以看到第一个页面。
 
 这里仅描述coodev的使用方法，具体的模板配置用法可见 `coodev-temp-normal`的文档<aa target="_blank" href="https://github.com/grARM/coodev-temp-normal">https://github.com/grARM/coodev-temp-normal</a>
